@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 220 13% 18%;
+  --surface: 220 14% 98%;
+  --surface-elevated: 0 0% 100%;
+  --surface-muted: 220 14% 96%;
+  --muted: 216 11% 45%;
+  --border: 220 13% 91%;
+  --accent: 0 73% 51%;
+  --accent-dark: 0 70% 35%;
+  --accent-soft: 0 84% 60%;
+  --accent-muted: 0 70% 96%;
+  --accent-foreground: 0 0% 100%;
+  --success: 142 71% 46%;
+  --destructive: 0 70% 35%;
+  --scrollbar-track: 220 14% 94%;
+  --scrollbar-thumb: 0 73% 51%;
+  --scrollbar-thumb-hover: 0 78% 55%;
+  --scrollbar-thumb-active: 0 70% 38%;
+  --scrollbar-size: 8px;
+}
+
+.dark {
+  --background: 220 18% 5%;
+  --foreground: 220 14% 91%;
+  --surface: 216 15% 8%;
+  --surface-elevated: 216 14% 10%;
+  --surface-muted: 220 12% 12%;
+  --muted: 216 11% 65%;
+  --border: 220 12% 18%;
+  --accent: 0 73% 54%;
+  --accent-dark: 0 70% 38%;
+  --accent-soft: 0 84% 62%;
+  --accent-muted: 0 50% 16%;
+  --accent-foreground: 0 0% 100%;
+  --success: 142 71% 46%;
+  --destructive: 0 70% 38%;
+  --scrollbar-track: 220 12% 14%;
+  --scrollbar-thumb: 0 73% 48%;
+  --scrollbar-thumb-hover: 0 78% 54%;
+  --scrollbar-thumb-active: 0 70% 42%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html,
+body,
+.scrollbar-premium {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--scrollbar-thumb)) hsl(var(--scrollbar-track));
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: hsl(var(--scrollbar-track));
+  border-radius: 9999px;
+  margin: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--scrollbar-thumb));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--scrollbar-thumb-hover));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.15);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--scrollbar-thumb-active));
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.25);
+}
+
+*::-webkit-scrollbar-corner {
+  background: hsl(var(--scrollbar-track));
+  border-radius: 0 0 4px 0;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+  min-width: 40px;
+}
+
+*::-webkit-scrollbar-thumb:vertical {
+  min-height: 40px;
+}
+
+@media (max-width: 768px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: smooth;
+  }
+  body {
+    overscroll-behavior: contain;
+  }
+}
+
+body {
+  @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] antialiased;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+button,
+select,
+input,
+a,
+[role="button"] {
+  transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),   transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.red-glow {
+  box-shadow: 0 0 24px -4px rgba(220, 38, 38, 0.25), 0 0 48px -12px rgba(220, 38, 38, 0.15);
+}
+
+.dark .red-glow {
+  box-shadow: 0 0 32px -4px rgba(220, 38, 38, 0.35), 0 0 64px -16px rgba(220, 38, 38, 0.2);
+}
+
+.focus-glow:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--accent)), 0 0 20px -4px rgba(220, 38, 38, 0.35);
+}
+
+.dark .focus-glow:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--accent)), 0 0 28px -4px rgba(220, 38, 38, 0.4);
+}
+
+.ambient-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, transparent 50%, rgba(127, 29, 29, 0.08) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+.recharts-default-tooltip {
+  padding: 0.75rem 1rem !important;
+  border-radius: 12px !important;
+  border: 1px solid hsl(var(--border)) !important;
+  background: hsl(var(--surface-elevated)) !important;
+  color: hsl(var(--foreground)) !important;
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 12px 48px -12px rgba(0, 0, 0, 0.06) !important;
+  font-size: 0.8125rem !important;
+}
+
+.recharts-tooltip-wrapper,
+.recharts-default-tooltip,
+.recharts-tooltip-label,
+.recharts-tooltip-item-list,
+.recharts-tooltip-item,
+.recharts-tooltip-item-name,
+.recharts-tooltip-item-separator,
+.recharts-tooltip-item-value,
+.recharts-tooltip-item-unit {
+  color: hsl(var(--foreground)) !important;
+}
+
+.dark .recharts-cartesian-axis-tick text,
+.dark .recharts-legend-item-text {
+  fill: hsl(var(--foreground)) !important;
+}
+
+.text-money {
+  @apply font-bold tabular-nums tracking-tight;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.text-money-hero {
+  @apply text-money;
+  background: linear-gradient(135deg, #b91c1c 0%, #dc2626 40%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(220, 38, 38, 0.15);
+}
+
+.dark .text-money-hero {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-number {
+  filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.2));
+}
+
+.dark .glow-number {
+  filter: drop-shadow(0 0 16px rgba(220, 38, 38, 0.3));
+}

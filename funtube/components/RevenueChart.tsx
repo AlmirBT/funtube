@@ -1,0 +1,183 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
+import { chartData, type ChartDataPoint } from "@/lib/mockData";
+import { getRangeMSK, isDateInRange } from "@/lib/dateUtils";
+import type { FiltersState } from "@/components/Filters";
+import { usdToRub, formatRubles } from "@/lib/currency";
+
+type Metric = "revenue" | "purchases" | "newPlayers" | "totalUsersPassed" | "usersOnline";
+
+const metricLabels: Record<Metric, string> = {
+  revenue: "Доход",
+  purchases: "Покупки",
+  newPlayers: "Новые игроки",
+  totalUsersPassed: "Всего игроков прошло",
+  usersOnline: "Игроков онлайн",
+};
+
+const formatTooltip = (value: number, metric: Metric) => {
+  if (metric === "revenue") return formatRubles(value);
+  return value.toLocaleString("ru-RU");
+};
+
+interface RevenueChartProps {
+  filters?: FiltersState;
+}
+
+export function RevenueChart({ filters }: RevenueChartProps) {
+  const [metric, setMetric] = useState<Metric>("revenue");
+
+  const metrics: Metric[] = ["revenue", "purchases", "newPlayers", "totalUsersPassed", "usersOnline"];
+
+  const data = useMemo(() => {
+    const range = filters
+      ? getRangeMSK(filters.dateRange, filters.customFrom, filters.customTo)
+      : { from: new Date(0), to: new Date() };
+    const filtered = chartData.filter((d) =>
+      isDateInRange(d.date, range.from, range.to)
+    );
+    return filtered.map((d) => ({
+      ...d,
+      dateLabel: new Date(d.date).toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "short",
+      }),
+      rub: usdToRub(d.revenue),
+    }));
+  }, [filters?.dateRange, filters?.customFrom, filters?.customTo]);
+
+  const dataKey =
+    metric === "revenue"
+      ? "rub"
+      : metric === "purchases"
+        ? "purchases"
+        : metric === "newPlayers"
+          ? "newPlayers"
+          : metric === "totalUsersPassed"
+            ? "totalUsersPassed"
+            : "usersOnline";
+
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: unknown }>; label?: string }) => {
+    if (!active || !payload?.length || !label) return null;
+    const p = payload[0]?.payload as ChartDataPoint & { dateLabel?: string; rub?: number };
+    const dateLabel = typeof label === "string" ? label : String(label);
+    const value =
+      metric === "revenue"
+        ? p.revenue
+        : metric === "purchases"
+          ? p.purchases
+          : metric === "newPlayers"
+            ? p.newPlayers
+            : metric === "totalUsersPassed"
+              ? p.totalUsersPassed
+              : p.usersOnline;
+    return (
+      <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--surface-elevated))] px-4 py-3 shadow-soft-lg dark:shadow-soft-dark-lg">
+        <p className="mb-2 text-xs font-medium text-[hsl(var(--muted))]">{dateLabel}</p>
+        <p className="text-sm font-semibold tabular-nums text-[hsl(var(--foreground))]">
+          {value != null ? formatTooltip(value, metric) : "—"}
+        </p>
+      </div>
+    );
+  };
+
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.12, ease: [0.32, 0.72, 0.2, 1] }}
+      className="rounded-2xl bg-[hsl(var(--surface))] p-6 shadow-soft dark:shadow-soft-dark sm:p-8 transition-shadow duration-500 hover:shadow-glow-subtle"
+    >
+      <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-base font-semibold tracking-tight text-[hsl(var(--foreground))]">
+          Аналитика
+        </h2>
+        <div className="flex flex-wrap items-center gap-2">
+          {metrics.map((m) => (
+            <motion.button
+              key={m}
+              type="button"
+              onClick={() => setMetric(m)}
+              whileTap={{ scale: 0.98 }}
+              className={`rounded-xl px-3 py-2 text-[13px] font-medium transition-all duration-300 ${
+                metric === m
+                  ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] shadow-[0_0_16px_-4px_rgba(220,38,38,0.35)] dark:shadow-[0_0_20px_-4px_rgba(220,38,38,0.4)]"
+                  : "bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))]"
+              }`}
+            >
+              {metricLabels[m]}
+            </motion.button>
+          ))}
+        </div>
+      </div>
+
+      <div className="h-[300px] w-full sm:h-[340px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={metric}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="h-full w-full"
+          >
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="fillRevenue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#DC2626" stopOpacity={0.25} />
+                    <stop offset="100%" stopColor="#DC2626" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+                <XAxis
+                  dataKey="dateLabel"
+                  tick={{ fontSize: 11, fill: "hsl(var(--muted))" }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <YAxis
+                  tickFormatter={(v) =>
+                    metric === "revenue" && v >= 1000
+                      ? `${(v / 1000).toFixed(0)}k`
+                      : String(v)
+                  }
+                  tick={{ fontSize: 11, fill: "hsl(var(--muted))" }}
+                  axisLine={false}
+                  tickLine={false}
+                  width={36}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <Area
+                  type="monotone"
+                  dataKey={dataKey}
+                  stroke="#DC2626"
+                  strokeWidth={2}
+                  fill="url(#fillRevenue)"
+                />
+                <Legend
+                  formatter={() => metricLabels[metric]}
+                  wrapperStyle={{ fontSize: 12 }}
+                  iconType="circle"
+                  iconSize={8}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.section>
+  );
+}

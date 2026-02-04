@@ -72,7 +72,7 @@ export function YouTubersComparison() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-sm dark:border-[hsl(var(--border))]/40 sm:p-8"
+      className="card-surface p-6 sm:p-8"
       aria-label="Сравнение со средним ютубером"
     >
       <div className="mb-6">
@@ -93,10 +93,12 @@ export function YouTubersComparison() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="flex flex-col rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 p-4 dark:bg-[hsl(var(--surface-muted))]/20"
+              className="flex flex-col rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/50 p-4"
             >
               <div className="flex items-center gap-2 text-[hsl(var(--muted))]">
-                <Icon className="h-4 w-4" strokeWidth={2} />
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
+                  <Icon className="h-4 w-4" strokeWidth={2} />
+                </span>
                 <span className="text-xs font-medium uppercase tracking-wider">{m.label}</span>
               </div>
               <div className="mt-3 flex items-baseline justify-between gap-2">

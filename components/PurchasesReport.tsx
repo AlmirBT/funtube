@@ -32,9 +32,9 @@ export function PurchasesReport({ filters: _filters }: PurchasesReportProps) {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.08 + i * 0.04 }}
-          className="flex items-center gap-4 rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface))] p-5 shadow-soft dark:shadow-soft-dark transition-all duration-300 hover:shadow-glow-subtle"
+          className="card-surface flex items-center gap-4 p-5 transition-all duration-300 hover:shadow-glow-subtle"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#DC2626]/10 text-[#DC2626]">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
             <card.icon className="h-5 w-5" strokeWidth={2} />
           </span>
           <div className="min-w-0">
@@ -45,7 +45,7 @@ export function PurchasesReport({ filters: _filters }: PurchasesReportProps) {
               {card.value}
             </p>
             {card.delta != null && (
-              <p className="mt-0.5 text-xs font-medium text-[#22C55E]">
+              <p className="mt-0.5 text-xs font-medium text-emerald-500">
                 +{card.delta}%
               </p>
             )}

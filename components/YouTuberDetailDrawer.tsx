@@ -79,27 +79,27 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
         {youtuber ? (
           <>
             <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: [0.32, 0.72, 0.2, 1] }}
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-          onClick={onClose}
-          aria-hidden
-        />
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.32, 0.72, 0.2, 1] }}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] dark:bg-black/60"
+              onClick={onClose}
+              aria-hidden
+            />
         <motion.aside
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", damping: 32, stiffness: 200 }}
-          className="fixed right-0 top-0 z-50 flex h-full w-full max-w-lg flex-col border-l border-[hsl(var(--border))] bg-[hsl(var(--surface))] shadow-2xl dark:shadow-2xl"
+          className="fixed right-0 top-0 z-50 flex h-full w-full max-w-lg flex-col border-l border-[hsl(var(--border))]/70 bg-gradient-to-b from-[hsl(var(--surface))] via-[hsl(var(--surface))] to-[hsl(var(--surface-muted))]/40 shadow-soft-lg ring-1 ring-[hsl(var(--border))]/50 dark:bg-[hsl(var(--surface))]/92 dark:shadow-2xl dark:backdrop-blur-xl dark:ring-[hsl(var(--border))]/40"
           role="dialog"
           aria-label={`Статистика: ${youtuber.name}`}
         >
-          <div className="shrink-0 border-b border-[hsl(var(--border))] px-6 py-5">
+          <div className="shrink-0 border-b border-[hsl(var(--border))]/70 bg-[hsl(var(--surface))]/95 px-6 py-5 dark:bg-[hsl(var(--surface))]/80">
             <div className="flex items-start justify-between gap-4">
               <div className="flex min-w-0 items-center gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#DC2626]/20 to-[#7F1D1D]/10 text-[#DC2626] shadow-[0_0_24px_-6px_rgba(220,38,38,0.25)]">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--accent))]/20 to-[hsl(var(--accent-dark))]/12 text-[hsl(var(--accent))] shadow-[0_0_24px_-10px_hsl(var(--accent)/0.45)]">
                   {youtuber.isOfficial ? (
                     <Crown className="h-7 w-7" strokeWidth={2} />
                   ) : (
@@ -110,7 +110,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                   <h2 className="truncate text-xl font-semibold tracking-tight text-[hsl(var(--foreground))]">
                     {youtuber.name}
                   </h2>
-                  <p className="mt-0.5 text-sm font-medium text-[#DC2626]">
+                  <p className="mt-0.5 text-sm font-medium text-[hsl(var(--accent))]">
                     {youtuber.domain}
                   </p>
                   {youtuber.rank != null && (
@@ -124,7 +124,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                 type="button"
                 onClick={onClose}
                 whileTap={{ scale: 0.95 }}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))]"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface))] hover:text-[hsl(var(--foreground))]"
                 aria-label="Закрыть"
               >
                 <X className="h-5 w-5" />
@@ -148,10 +148,10 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                       initial={{ opacity: 0, x: 8 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, ease: [0.32, 0.72, 0.2, 1] }}
-                      className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 px-4 py-3"
+                      className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/70 px-4 py-3"
                     >
                       <span className="flex items-center gap-2.5 text-sm text-[hsl(var(--muted))]">
-                        <Icon className="h-4 w-4 text-[#DC2626]/80" strokeWidth={2} />
+                        <Icon className="h-4 w-4 text-[hsl(var(--accent))]/80" strokeWidth={2} />
                         {label}
                       </span>
                       <span className="font-semibold tabular-nums text-[hsl(var(--foreground))]">
@@ -164,10 +164,10 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                   initial={{ opacity: 0, x: 8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.05, ease: [0.32, 0.72, 0.2, 1] }}
-                  className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 px-4 py-3"
+                  className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/70 px-4 py-3"
                 >
                   <span className="flex items-center gap-2.5 text-sm text-[hsl(var(--muted))]">
-                    <Wallet className="h-4 w-4 text-[#DC2626]/80" strokeWidth={2} />
+                    <Wallet className="h-4 w-4 text-[hsl(var(--accent))]/80" strokeWidth={2} />
                     Средний чек
                   </span>
                   <span className="font-semibold tabular-nums text-[hsl(var(--foreground))]">
@@ -196,7 +196,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, ease: [0.32, 0.72, 0.2, 1] }}
-                      className="rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/20 p-4"
+                      className="rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/55 p-4"
                     >
                       <p className="mb-3 text-[11px] font-medium uppercase tracking-wider text-[hsl(var(--muted))]">
                         {label}
@@ -208,7 +208,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                             {format(myVal)}
                           </p>
                         </div>
-                        <div className="flex shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))]/50 px-2.5 py-1">
+                        <div className="flex shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface))]/90 px-2.5 py-1">
                           {youWin && (
                             <span className="flex items-center gap-1 text-xs font-semibold text-[#22C55E]">
                               <TrendingUp className="h-3.5 w-3.5" />
@@ -242,7 +242,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.05, ease: [0.32, 0.72, 0.2, 1] }}
-                  className="rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/20 p-4"
+                  className="rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/55 p-4"
                 >
                   <p className="mb-3 text-[11px] font-medium uppercase tracking-wider text-[hsl(var(--muted))]">
                     Средний чек
@@ -254,7 +254,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
                         {formatRubles(myAvgCheck, { decimals: 0 })}
                       </p>
                     </div>
-                    <div className="flex shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))]/50 px-2.5 py-1">
+                    <div className="flex shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface))]/90 px-2.5 py-1">
                       {(() => {
                         const diff = diffPercent(myAvgCheck, theirAvgCheck);
                         if (diff > 0)
@@ -293,7 +293,7 @@ export function YouTuberDetailDrawer({ youtuber, onClose }: YouTuberDetailDrawer
             <div className="border-t border-[hsl(var(--border))]/60 px-6 py-5">
               <Link
                 href={`/dashboard/analytics?user=${youtuber.id}&compare=1`}
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#DC2626]/40 bg-[#DC2626]/10 py-3.5 text-sm font-semibold text-[#DC2626] transition-all duration-200 hover:bg-[#DC2626]/15 hover:border-[#DC2626]/60 hover:shadow-glow-subtle"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-[hsl(var(--accent))]/40 bg-[hsl(var(--accent))]/10 py-3.5 text-sm font-semibold text-[hsl(var(--accent))] transition-all duration-200 hover:bg-[hsl(var(--accent))]/15 hover:border-[hsl(var(--accent))]/60 hover:shadow-glow-subtle"
               >
                 <GitCompare className="h-4 w-4" strokeWidth={2} />
                 Полное сравнение на странице аналитики

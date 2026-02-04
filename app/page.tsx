@@ -20,7 +20,7 @@ export default function Home() {
         transition={{ duration: 0.4, ease: [0.32, 0.72, 0.2, 1] }}
         className="flex flex-col items-center gap-4"
       >
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#DC2626]/10 text-[#DC2626]">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
           <LayoutDashboard className="h-7 w-7" strokeWidth={2} />
         </div>
         <p className="text-lg font-medium text-[hsl(var(--foreground))]">
@@ -30,7 +30,7 @@ export default function Home() {
           Если страница не открылась,{" "}
           <a
             href="/dashboard"
-            className="font-medium text-[#DC2626] underline underline-offset-2 hover:no-underline"
+            className="font-medium text-[hsl(var(--accent))] underline underline-offset-2 hover:no-underline"
           >
             нажмите сюда
           </a>

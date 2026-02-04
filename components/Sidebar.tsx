@@ -45,34 +45,36 @@ export function Sidebar() {
   }, [mobileMenuOpen]);
 
   const NavLinks = ({ layoutId = "sidebar-active" }: { layoutId?: string }) => (
-    <nav className="flex flex-col gap-0.5 px-3 py-4">
+    <nav className="flex flex-col gap-1 px-4 pb-4 pt-3">
+      <span className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[hsl(var(--muted))]">
+        Разделы
+      </span>
       {nav.map((item) => {
         const isActive = pathname === item.href;
         const Icon = item.icon;
         return (
           <Link key={item.href} href={item.href}>
             <motion.span
-              className={`relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-300 ease-out ${
+              className={`group relative flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-medium transition-all duration-300 ease-out ${
                 isActive
-                  ? "text-[hsl(var(--accent))]"
-                  : "text-[hsl(var(--muted))] hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--foreground))]"
+                  ? "text-[hsl(var(--foreground))]"
+                  : "text-[hsl(var(--muted))] hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))]"
               }`}
-              whileHover={{ x: 4 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ x: 6 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ type: "tween", duration: 0.2 }}
             >
               {isActive && (
                 <motion.span
                   layoutId={layoutId}
-                  className="absolute inset-0 rounded-xl bg-[hsl(var(--accent-muted))]"
-                  transition={{ type: "spring", bounce: 0.12, duration: 0.5 }}
-                  style={{ opacity: 0.6 }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[hsl(var(--accent))]/20 via-[hsl(var(--accent))]/10 to-transparent ring-1 ring-inset ring-[hsl(var(--accent))]/30"
+                  transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="relative z-10 flex h-9 w-9 items-center justify-center rounded-xl bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors duration-300 group-hover:text-[hsl(var(--accent))] group-hover:bg-[hsl(var(--accent))]/10">
                 <Icon className="h-4 w-4 shrink-0" strokeWidth={1.75} />
-                {item.label}
               </span>
+              <span className="relative z-10">{item.label}</span>
             </motion.span>
           </Link>
         );
@@ -81,10 +83,12 @@ export function Sidebar() {
   );
 
   const DomainsBlock = () => (
-    <div className="border-t border-[hsl(var(--border))]/80 px-3 py-4">
-      <div className="mb-2 flex items-center gap-2 px-3 py-1.5">
-        <Globe className="h-4 w-4 text-[#DC2626]" strokeWidth={2} />
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">
+    <div className="mx-4 mb-4 rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/60 p-3">
+      <div className="mb-2 flex items-center gap-2 px-2 py-1">
+        <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
+          <Globe className="h-4 w-4" strokeWidth={2} />
+        </span>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[hsl(var(--muted))]">
           Домены
         </span>
       </div>
@@ -94,7 +98,7 @@ export function Sidebar() {
           openAllDomains();
           setMobileMenuOpen(false);
         }}
-        className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-[hsl(var(--foreground))] transition-colors hover:bg-[hsl(var(--surface-muted))] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30"
+        className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-[hsl(var(--foreground))] transition-colors hover:bg-[hsl(var(--surface))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/30"
       >
         <LayoutList className="h-4 w-4 shrink-0 text-[hsl(var(--muted))]" />
         Все домены
@@ -108,7 +112,7 @@ export function Sidebar() {
                 openDomain(d.domain);
                 setMobileMenuOpen(false);
               }}
-              className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-[13px] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--foreground))] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30"
+              className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-[13px] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface))] hover:text-[hsl(var(--foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/30"
             >
               <Globe className="h-3.5 w-3.5 shrink-0" />
               <span className="truncate font-mono text-[12px]">{d.domain}</span>
@@ -121,35 +125,35 @@ export function Sidebar() {
 
   return (
     <>
-      <aside className="scrollbar-premium fixed left-0 top-0 z-40 flex hidden h-screen w-[240px] flex-col overflow-y-auto border-r border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] transition-colors duration-300 md:flex">
-        <div className="flex h-16 shrink-0 items-center px-5">
+      <aside className="scrollbar-premium fixed left-0 top-0 z-40 flex hidden h-screen w-[260px] flex-col overflow-y-auto border-r border-[hsl(var(--border))]/70 bg-[hsl(var(--surface))]/85 backdrop-blur-xl transition-colors duration-300 md:flex">
+        <div className="flex h-16 shrink-0 items-center px-6">
           <Link
             href="/dashboard"
-            className="font-logo flex items-baseline gap-0 no-underline outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--surface))] rounded-lg transition-opacity duration-200 hover:opacity-90"
+            className="font-logo flex items-baseline gap-0 rounded-lg no-underline outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[hsl(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--surface))]"
             aria-label="funtube — на главную"
           >
-            <span className="text-[1.35rem] font-extrabold tracking-tight text-[#DC2626]">fun</span>
+            <span className="text-[1.35rem] font-extrabold tracking-tight text-[hsl(var(--accent))]">fun</span>
             <span className="text-[1.35rem] font-extrabold tracking-tight text-[hsl(var(--foreground))]">tube</span>
           </Link>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto">
           <NavLinks />
         </div>
-        <div className="shrink-0 border-t border-[hsl(var(--border))]/80">
+        <div className="shrink-0 border-t border-[hsl(var(--border))]/70">
           <DomainsBlock />
-          <div className="border-t border-[hsl(var(--border))]/80 p-4">
+          <div className="border-t border-[hsl(var(--border))]/70 p-4">
             <ThemeToggle />
           </div>
         </div>
       </aside>
 
-      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between gap-3 border-b border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))]/95 px-4 backdrop-blur-md transition-colors duration-300 md:hidden">
+      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between gap-3 border-b border-[hsl(var(--border))]/70 bg-[hsl(var(--surface))]/85 px-4 backdrop-blur-xl transition-colors duration-300 md:hidden">
         <Link
           href="/dashboard"
-          className="font-logo flex shrink-0 items-baseline gap-0 no-underline outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--accent))] focus-visible:ring-offset-2 rounded-lg transition-opacity duration-200 hover:opacity-90"
+          className="font-logo flex shrink-0 items-baseline gap-0 rounded-lg no-underline outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[hsl(var(--accent))] focus-visible:ring-offset-2"
           aria-label="funtube — на главную"
         >
-          <span className="text-xl font-extrabold tracking-tight text-[#DC2626]">fun</span>
+          <span className="text-xl font-extrabold tracking-tight text-[hsl(var(--accent))]">fun</span>
           <span className="text-xl font-extrabold tracking-tight text-[hsl(var(--foreground))]">tube</span>
         </Link>
         <div className="flex items-center gap-2">
@@ -157,7 +161,7 @@ export function Sidebar() {
           <motion.button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface-muted))]/80 text-[hsl(var(--foreground))] transition-colors hover:bg-[hsl(var(--surface-muted))] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-[hsl(var(--border))]/70 bg-[hsl(var(--surface-muted))]/80 text-[hsl(var(--foreground))] transition-colors hover:bg-[hsl(var(--surface))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/30"
             aria-label="Открыть меню"
             whileTap={{ scale: 0.95 }}
           >
@@ -183,18 +187,18 @@ export function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 300 }}
-              className="scrollbar-premium fixed left-0 top-0 z-[70] flex h-full w-[280px] max-w-[85vw] flex-col overflow-y-auto border-r border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] shadow-2xl md:hidden"
+              className="scrollbar-premium fixed left-0 top-0 z-[70] flex h-full w-[300px] max-w-[88vw] flex-col overflow-y-auto border-r border-[hsl(var(--border))]/70 bg-[hsl(var(--surface))]/90 shadow-2xl backdrop-blur-xl md:hidden"
               role="dialog"
               aria-label="Меню навигации"
             >
-              <div className="flex h-14 shrink-0 items-center justify-between border-b border-[hsl(var(--border))]/80 px-4">
+              <div className="flex h-14 shrink-0 items-center justify-between border-b border-[hsl(var(--border))]/70 px-4">
                 <span className="font-logo text-lg font-extrabold tracking-tight text-[hsl(var(--foreground))]">
                   Меню
                 </span>
                 <motion.button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface))] hover:text-[hsl(var(--foreground))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/30"
                   aria-label="Закрыть меню"
                   whileTap={{ scale: 0.95 }}
                 >

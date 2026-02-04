@@ -33,7 +33,7 @@ export function Insights() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.25, ease: [0.32, 0.72, 0.2, 1] }}
-      className="mt-6 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/30 p-4 dark:border-[hsl(var(--border))]/40"
+      className="card-muted mt-6 p-4"
       aria-label="Инсайты"
     >
       <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">

@@ -12,7 +12,7 @@ interface SparklineProps {
 export function Sparkline({
   data,
   className = "",
-  strokeClassName = "stroke-[#DC2626]",
+  strokeClassName = "stroke-[hsl(var(--accent))]",
   height = 32,
 }: SparklineProps) {
   const id = useId().replace(/:/g, "");
@@ -36,8 +36,8 @@ export function Sparkline({
     >
       <defs>
         <linearGradient id={`sparkline-${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#DC2626" stopOpacity={0.4} />
-          <stop offset="100%" stopColor="#DC2626" stopOpacity={0} />
+          <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity={0.4} />
+          <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity={0} />
         </linearGradient>
       </defs>
       <polygon

@@ -10,12 +10,12 @@ export function OfficialYouTubersList() {
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="overflow-hidden rounded-2xl bg-[hsl(var(--surface))] shadow-soft dark:shadow-soft-dark"
+      className="card-surface overflow-hidden"
       aria-label="Список официальных ютуберов"
     >
       <div className="border-b border-[hsl(var(--border))]/80 bg-[hsl(var(--surface-muted))]/50 px-6 py-4">
         <h2 className="flex items-center gap-2 text-sm font-semibold tracking-tight text-[hsl(var(--foreground))]">
-          <ShieldCheck className="h-4 w-4 text-[#DC2626]" strokeWidth={2} />
+          <ShieldCheck className="h-4 w-4 text-[hsl(var(--accent))]" strokeWidth={2} />
           Список официальных ютуберов
         </h2>
         <p className="mt-1.5 text-[12px] text-[hsl(var(--muted))]">
@@ -45,7 +45,7 @@ export function OfficialYouTubersList() {
                     href={item.youtubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-medium text-[hsl(var(--foreground))] hover:text-[#DC2626]"
+                    className="inline-flex items-center gap-1.5 font-medium text-[hsl(var(--foreground))] hover:text-[hsl(var(--accent))]"
                   >
                     {item.name}
                     <ExternalLink className="h-3.5 w-3.5 opacity-60" />

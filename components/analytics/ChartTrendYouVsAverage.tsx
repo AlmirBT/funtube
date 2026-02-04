@@ -41,7 +41,7 @@ export function ChartTrendYouVsAverage() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.05, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-sm dark:border-[hsl(var(--border))]/40 sm:p-8"
+      className="card-surface p-6 sm:p-8"
       aria-label="Динамика дохода за 7 дней: вы vs средний ютубер"
     >
       <div className="mb-6">
@@ -55,7 +55,7 @@ export function ChartTrendYouVsAverage() {
       <div className="h-[280px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} opacity={0.6} />
             <XAxis dataKey="day" tick={{ fontSize: 11, fill: "hsl(var(--muted))" }} stroke="hsl(var(--muted))" tickLine={false} axisLine={false} />
             <YAxis
               tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k ₽` : `${v} ₽`)}
@@ -88,10 +88,10 @@ export function ChartTrendYouVsAverage() {
               type="monotone"
               dataKey="youRub"
               name="you"
-              stroke="#DC2626"
+              stroke="hsl(var(--accent))"
               strokeWidth={2.5}
-              dot={{ fill: "#DC2626", strokeWidth: 0, r: 4 }}
-              activeDot={{ r: 6, fill: "#DC2626", stroke: "hsl(var(--surface))", strokeWidth: 2 }}
+              dot={{ fill: "hsl(var(--accent))", strokeWidth: 0, r: 4 }}
+              activeDot={{ r: 6, fill: "hsl(var(--accent))", stroke: "hsl(var(--surface))", strokeWidth: 2 }}
             />
             <Line
               type="monotone"

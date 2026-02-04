@@ -154,8 +154,8 @@ export function PurchasesTable({
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-[hsl(var(--border))]/40 bg-[hsl(var(--surface))] p-6">
-        <div className="h-64 animate-pulse rounded-lg bg-[hsl(var(--surface-muted))]" />
+      <div className="card-surface p-6">
+        <div className="h-64 animate-pulse rounded-2xl bg-[hsl(var(--surface-muted))]" />
       </div>
     );
   }
@@ -165,7 +165,7 @@ export function PurchasesTable({
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center rounded-xl border border-[hsl(var(--border))]/60 border-dashed bg-[hsl(var(--surface-muted))]/30 py-16 px-8"
+        className="flex flex-col items-center justify-center rounded-2xl border border-[hsl(var(--border))]/60 border-dashed bg-[hsl(var(--surface-muted))]/40 py-16 px-8 text-center"
       >
         <p className="text-lg font-semibold text-[hsl(var(--foreground))]">
           Покупки не найдены
@@ -177,7 +177,7 @@ export function PurchasesTable({
           <button
             type="button"
             onClick={onShowDemo}
-            className="mt-4 rounded-full bg-[#DC2626] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+            className="mt-4 rounded-full bg-[hsl(var(--accent))] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
           >
             Посмотреть демо-данные
           </button>
@@ -191,11 +191,11 @@ export function PurchasesTable({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.08, ease: [0.32, 0.72, 0.2, 1] }}
-      className="overflow-hidden rounded-2xl bg-[hsl(var(--surface))] shadow-soft dark:shadow-soft-dark"
+      className="card-surface overflow-hidden"
     >
       <div className="scrollbar-premium overflow-x-auto overflow-y-visible">
         <table className="w-full min-w-[640px] border-collapse text-[13px]">
-          <thead className="sticky top-0 z-10 bg-[hsl(var(--surface-muted))]/95 backdrop-blur-sm">
+          <thead className="sticky top-0 z-10 bg-[hsl(var(--surface-muted))]/85 backdrop-blur-md">
             <tr className="border-b border-[hsl(var(--border))]/80 bg-[hsl(var(--surface-muted))]/50">
               <Th label="Дата покупки" sortKey="date" align="left" className="px-6 py-4" />
               <Th label="Игровой ник" sortKey="username" className="px-6 py-4" />
@@ -218,8 +218,8 @@ export function PurchasesTable({
                     transition={{ duration: 0.25, delay: i * 0.02 }}
                     onClick={() => onRowClick?.(row)}
                     className={`group cursor-pointer border-b border-[hsl(var(--border))]/60 last:border-b-0 transition-all duration-200 ${
-                      dimmed ? "opacity-45" : "hover:bg-[hsl(var(--surface-muted))]/50"
-                    } ${isMatch && searchQuery ? "bg-[#DC2626]/10 ring-1 ring-inset ring-[#DC2626]/30" : ""}`}
+                      dimmed ? "opacity-45" : "hover:bg-[hsl(var(--surface-muted))]/60"
+                    } ${isMatch && searchQuery ? "bg-[hsl(var(--accent))]/10 ring-1 ring-inset ring-[hsl(var(--accent))]/30" : ""}`}
                   >
                     <td className="px-6 py-4 text-[13px] text-[hsl(var(--muted))] tabular-nums">
                       {new Date(row.date).toLocaleString("ru-RU", {
@@ -230,7 +230,7 @@ export function PurchasesTable({
                         minute: "2-digit",
                       })}
                     </td>
-                    <td className={`px-6 py-4 font-medium ${isMatch && searchQuery ? "text-[#DC2626]" : "text-[hsl(var(--foreground))]"}`}>
+                    <td className={`px-6 py-4 font-medium ${isMatch && searchQuery ? "text-[hsl(var(--accent))]" : "text-[hsl(var(--foreground))]"}`}>
                       {row.nickname || row.username}
                     </td>
                     <td className="px-6 py-4 text-[13px] text-[hsl(var(--muted))]">
@@ -239,7 +239,7 @@ export function PurchasesTable({
                     <td className="px-6 py-4 text-[hsl(var(--foreground))]">
                       {typeLabels[row.type]}
                     </td>
-                    <td className="px-6 py-4 text-right font-semibold tabular-nums text-[#DC2626]">
+                    <td className="px-6 py-4 text-right font-semibold tabular-nums text-[hsl(var(--accent))]">
                       {formatRubles(row.amount, { decimals: 2 })}
                     </td>
                   </motion.tr>
@@ -260,7 +260,7 @@ export function PurchasesTable({
             type="button"
             onClick={() => setPage((p) => Math.max(0, p - 1))}
             disabled={page === 0}
-            className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] text-[hsl(var(--foreground))] disabled:opacity-50 disabled:pointer-events-none hover:bg-[hsl(var(--surface-muted))]"
+            className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] text-[hsl(var(--foreground))] disabled:pointer-events-none disabled:opacity-50 hover:bg-[hsl(var(--surface-muted))]"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -271,7 +271,7 @@ export function PurchasesTable({
             type="button"
             onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
             disabled={page >= totalPages - 1}
-            className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] text-[hsl(var(--foreground))] disabled:opacity-50 disabled:pointer-events-none hover:bg-[hsl(var(--surface-muted))]"
+            className="flex h-8 w-8 items-center justify-center rounded-lg border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface))] text-[hsl(var(--foreground))] disabled:pointer-events-none disabled:opacity-50 hover:bg-[hsl(var(--surface-muted))]"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

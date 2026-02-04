@@ -27,10 +27,10 @@ function TopDomainsByRevenue() {
   return (
     <motion.article
       variants={item}
-      className="rounded-2xl border-2 border-[#DC2626]/20 bg-gradient-to-br from-[#DC2626]/8 to-[#7F1D1D]/5 p-6 shadow-soft transition-all duration-300 hover:border-[#DC2626]/30 hover:shadow-glow-subtle dark:from-[#DC2626]/12 dark:to-[#7F1D1D]/8 dark:shadow-soft-dark sm:p-8"
+      className="card-surface p-6 transition-all duration-300 hover:shadow-glow-subtle sm:p-8"
     >
       <div className="mb-6 flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[hsl(var(--accent))] text-white shadow-lg shadow-[hsl(var(--accent))]/30">
           <DollarSign className="h-7 w-7" strokeWidth={2} />
         </div>
         <div>
@@ -47,12 +47,12 @@ function TopDomainsByRevenue() {
           <li
             key={d.domain}
             className={`flex items-center justify-between gap-4 rounded-xl px-4 py-3 ${
-              i === 0 ? "bg-[#DC2626]/15 ring-1 ring-[#DC2626]/30" : "bg-[hsl(var(--surface-muted))]/50"
+              i === 0 ? "bg-[hsl(var(--accent))]/12 ring-1 ring-[hsl(var(--accent))]/30" : "bg-[hsl(var(--surface-muted))]/60"
             }`}
           >
             <span className="flex items-center gap-3 min-w-0">
               <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
-                i === 0 ? "bg-[#DC2626] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
+                i === 0 ? "bg-[hsl(var(--accent))] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
               }`}>
                 {i + 1}
               </span>
@@ -60,7 +60,7 @@ function TopDomainsByRevenue() {
                 {d.domain}
               </span>
             </span>
-            <span className="shrink-0 text-lg font-bold tabular-nums text-[#DC2626]">
+            <span className="shrink-0 text-lg font-bold tabular-nums text-[hsl(var(--accent))]">
               {formatRubles(d.revenue)}
             </span>
           </li>
@@ -75,10 +75,10 @@ function TopDomainsByPlayers() {
   return (
     <motion.article
       variants={item}
-      className="rounded-2xl border-2 border-[#DC2626]/20 bg-gradient-to-br from-[#DC2626]/8 to-[#7F1D1D]/5 p-6 shadow-soft transition-all duration-300 hover:border-[#DC2626]/30 hover:shadow-glow-subtle dark:from-[#DC2626]/12 dark:to-[#7F1D1D]/8 dark:shadow-soft-dark sm:p-8"
+      className="card-surface p-6 transition-all duration-300 hover:shadow-glow-subtle sm:p-8"
     >
       <div className="mb-6 flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[hsl(var(--accent))] text-white shadow-lg shadow-[hsl(var(--accent))]/30">
           <Users className="h-7 w-7" strokeWidth={2} />
         </div>
         <div>
@@ -95,12 +95,12 @@ function TopDomainsByPlayers() {
           <li
             key={d.domain}
             className={`flex items-center justify-between gap-4 rounded-xl px-4 py-3 ${
-              i === 0 ? "bg-[#DC2626]/15 ring-1 ring-[#DC2626]/30" : "bg-[hsl(var(--surface-muted))]/50"
+              i === 0 ? "bg-[hsl(var(--accent))]/12 ring-1 ring-[hsl(var(--accent))]/30" : "bg-[hsl(var(--surface-muted))]/60"
             }`}
           >
             <span className="flex items-center gap-3 min-w-0">
               <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
-                i === 0 ? "bg-[#DC2626] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
+                i === 0 ? "bg-[hsl(var(--accent))] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
               }`}>
                 {i + 1}
               </span>
@@ -108,7 +108,7 @@ function TopDomainsByPlayers() {
                 {d.domain}
               </span>
             </span>
-            <span className="shrink-0 text-lg font-bold tabular-nums text-[#DC2626]">
+            <span className="shrink-0 text-lg font-bold tabular-nums text-[hsl(var(--accent))]">
               {d.attractedUsers.toLocaleString("ru-RU")}
             </span>
           </li>
@@ -123,10 +123,10 @@ function TopPlayersBySpent() {
   return (
     <motion.article
       variants={item}
-      className="rounded-2xl border-2 border-[#DC2626]/20 bg-gradient-to-br from-[#DC2626]/8 to-[#7F1D1D]/5 p-6 shadow-soft transition-all duration-300 hover:border-[#DC2626]/30 hover:shadow-glow-subtle dark:from-[#DC2626]/12 dark:to-[#7F1D1D]/8 dark:shadow-soft-dark sm:p-8"
+      className="card-surface p-6 transition-all duration-300 hover:shadow-glow-subtle sm:p-8"
     >
       <div className="mb-6 flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[hsl(var(--accent))] text-white shadow-lg shadow-[hsl(var(--accent))]/30">
           <Trophy className="h-7 w-7" strokeWidth={2} />
         </div>
         <div>
@@ -143,12 +143,12 @@ function TopPlayersBySpent() {
           <li
             key={u.username}
             className={`flex items-center justify-between gap-4 rounded-xl px-4 py-3 ${
-              i === 0 ? "bg-[#DC2626]/15 ring-1 ring-[#DC2626]/30" : "bg-[hsl(var(--surface-muted))]/50"
+              i === 0 ? "bg-[hsl(var(--accent))]/12 ring-1 ring-[hsl(var(--accent))]/30" : "bg-[hsl(var(--surface-muted))]/60"
             }`}
           >
             <span className="flex items-center gap-3 min-w-0">
               <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
-                i === 0 ? "bg-[#DC2626] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
+                i === 0 ? "bg-[hsl(var(--accent))] text-white" : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))]"
               }`}>
                 {i + 1}
               </span>
@@ -156,7 +156,7 @@ function TopPlayersBySpent() {
                 {u.username}
               </span>
             </span>
-            <span className="shrink-0 text-lg font-bold tabular-nums text-[#DC2626]">
+            <span className="shrink-0 text-lg font-bold tabular-nums text-[hsl(var(--accent))]">
               {formatRubles(u.totalSpent)}
             </span>
           </li>

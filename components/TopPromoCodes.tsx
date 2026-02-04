@@ -33,10 +33,10 @@ export function TopPromoCodes() {
       animate="show"
       whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 260, damping: 28 }}
-      className="rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/40 p-6 shadow-soft transition-shadow duration-300 ease-out hover:shadow-soft-lg dark:border-[hsl(var(--border))]/40 dark:shadow-soft-dark dark:hover:shadow-soft-dark-lg"
+      className="card-surface p-6 transition-shadow duration-300 ease-out hover:shadow-soft-lg"
     >
       <div className="mb-5 flex items-center gap-2">
-        <Ticket className="h-4 w-4 text-[#DC2626]" strokeWidth={2} />
+        <Ticket className="h-4 w-4 text-[hsl(var(--accent))]" strokeWidth={2} />
         <h3 className="text-sm font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">
           Игроков по доменам
         </h3>
@@ -47,7 +47,7 @@ export function TopPromoCodes() {
             key={p.domain}
             variants={item}
             className={`rounded-xl transition-all ${
-              i === 0 ? "bg-[#DC2626]/5 ring-1 ring-[#DC2626]/20" : ""
+              i === 0 ? "bg-[hsl(var(--accent))]/8 ring-1 ring-[hsl(var(--accent))]/25" : ""
             }`}
           >
             <button
@@ -57,13 +57,13 @@ export function TopPromoCodes() {
             >
               <div
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
-                  i === 0 ? "bg-[#DC2626] text-white" : "bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))]"
+                  i === 0 ? "bg-[hsl(var(--accent))] text-white" : "bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))]"
                 }`}
               >
                 <Globe className="h-5 w-5" strokeWidth={2} />
               </div>
               <div className="min-w-0 flex-1">
-                <p className={`font-semibold ${i === 0 ? "text-[#DC2626]" : "text-[hsl(var(--foreground))]"}`}>
+                <p className={`font-semibold ${i === 0 ? "text-[hsl(var(--accent))]" : "text-[hsl(var(--foreground))]"}`}>
                   {p.domain}
                 </p>
                 <p className="mt-0.5 text-[13px] text-[hsl(var(--muted))]">

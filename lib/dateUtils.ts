@@ -1,4 +1,5 @@
 const MSK_OFFSET_MS = 3 * 60 * 60 * 1000;
+export const MOCK_NOW = new Date("2026-02-04T12:00:00+03:00");
 
 function getMSKDateParts(date: Date): { year: number; month: number; day: number } {
   const utc = date.getTime();
@@ -24,7 +25,7 @@ export function getRangeMSK(
   customFrom?: string,
   customTo?: string
 ): { from: Date; to: Date } {
-  const now = new Date();
+  const now = new Date(MOCK_NOW);
   const todayStart = startOfDayMSK(now);
   const todayEnd = endOfDayMSK(now);
 

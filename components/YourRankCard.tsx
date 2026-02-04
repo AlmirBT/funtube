@@ -20,19 +20,19 @@ export function YourRankCard() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[#DC2626]/30 bg-gradient-to-br from-[#DC2626]/10 to-[#7F1D1D]/5 p-6 dark:from-[#DC2626]/15 dark:to-[#7F1D1D]/10"
+      className="card-surface bg-gradient-to-br from-[hsl(var(--accent))]/12 to-[hsl(var(--accent-dark))]/10 p-6"
       aria-label="Ваше место в рейтинге"
     >
       <div className="flex flex-wrap items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#DC2626]/20 text-[#DC2626]">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[hsl(var(--accent))]/20 text-[hsl(var(--accent))]">
             <Medal className="h-7 w-7" strokeWidth={2} />
           </div>
           <div>
             <h2 className="text-lg font-semibold tracking-tight text-[hsl(var(--foreground))]">
               Ваше место в рейтинге
             </h2>
-            <p className="mt-1 flex items-center gap-2 text-2xl font-bold tabular-nums text-[#DC2626]">
+            <p className="mt-1 flex items-center gap-2 text-2xl font-bold tabular-nums text-[hsl(var(--accent))]">
               {myRank === 1 ? "🥇" : myRank === 2 ? "🥈" : myRank === 3 ? "🥉" : null}
               {myRank} из {total}
             </p>
@@ -54,7 +54,7 @@ export function YourRankCard() {
             <p className="text-[11px] font-medium uppercase tracking-wider text-[hsl(var(--muted))]">
               Конверсия
             </p>
-            <p className="mt-1 text-xl font-bold tabular-nums text-[#22C55E]">
+            <p className="mt-1 text-xl font-bold tabular-nums text-emerald-500">
               {myStats.conversion}%
             </p>
           </div>
@@ -62,7 +62,7 @@ export function YourRankCard() {
             <p className="text-[11px] font-medium uppercase tracking-wider text-[hsl(var(--muted))]">
               Новички
             </p>
-            <p className="mt-1 text-xl font-bold tabular-nums text-[#DC2626]">
+            <p className="mt-1 text-xl font-bold tabular-nums text-[hsl(var(--accent))]">
               {myStats.attractedUsers.toLocaleString("ru-RU")}
             </p>
           </div>

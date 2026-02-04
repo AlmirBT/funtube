@@ -98,12 +98,15 @@ export function RevenueChart({ filters }: RevenueChartProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.12, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl bg-[hsl(var(--surface))] p-6 shadow-soft dark:shadow-soft-dark sm:p-8 transition-shadow duration-500 hover:shadow-glow-subtle"
+      className="card-surface p-6 sm:p-8 transition-shadow duration-500 hover:shadow-glow-subtle"
     >
       <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-base font-semibold tracking-tight text-[hsl(var(--foreground))]">
-          Аналитика
-        </h2>
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight text-[hsl(var(--foreground))]">
+            Аналитика
+          </h2>
+          <p className="mt-1 text-sm text-[hsl(var(--muted))]">Динамика ключевых метрик по периоду</p>
+        </div>
         <div className="flex flex-wrap items-center gap-2">
           {metrics.map((m) => (
             <motion.button
@@ -111,10 +114,10 @@ export function RevenueChart({ filters }: RevenueChartProps) {
               type="button"
               onClick={() => setMetric(m)}
               whileTap={{ scale: 0.98 }}
-              className={`rounded-xl px-3 py-2 text-[13px] font-medium transition-all duration-300 ${
+              className={`rounded-full px-3.5 py-2 text-[13px] font-semibold transition-all duration-300 ${
                 metric === m
-                  ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] shadow-[0_0_16px_-4px_rgba(220,38,38,0.35)] dark:shadow-[0_0_20px_-4px_rgba(220,38,38,0.4)]"
-                  : "bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))]"
+                  ? "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] shadow-[0_0_18px_-8px_hsl(var(--accent)/0.5)]"
+                  : "bg-[hsl(var(--surface-muted))]/70 text-[hsl(var(--muted))] hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--foreground))]"
               }`}
             >
               {metricLabels[m]}
@@ -137,11 +140,11 @@ export function RevenueChart({ filters }: RevenueChartProps) {
               <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="fillRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#DC2626" stopOpacity={0.25} />
-                    <stop offset="100%" stopColor="#DC2626" stopOpacity={0} />
+                    <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity={0.25} />
+                    <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.4} />
                 <XAxis
                   dataKey="dateLabel"
                   tick={{ fontSize: 11, fill: "hsl(var(--muted))" }}
@@ -163,7 +166,7 @@ export function RevenueChart({ filters }: RevenueChartProps) {
                 <Area
                   type="monotone"
                   dataKey={dataKey}
-                  stroke="#DC2626"
+                  stroke="hsl(var(--accent))"
                   strokeWidth={2}
                   fill="url(#fillRevenue)"
                 />

@@ -28,12 +28,12 @@ export function DomainInfo() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-sm dark:border-[hsl(var(--border))]/40 dark:shadow-none"
+      className="card-surface p-6"
       aria-label="Ваш IP / домен"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#DC2626]/10 text-[#DC2626]">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
             <Globe className="h-4 w-4" strokeWidth={2} />
           </div>
           <div>
@@ -62,8 +62,8 @@ export function DomainInfo() {
       </div>
 
       <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 px-4 py-3">
-          <Server className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626]" strokeWidth={2} />
+        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/50 px-4 py-3">
+          <Server className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--accent))]" strokeWidth={2} />
           <div>
             <p className="text-xs font-semibold text-[hsl(var(--foreground))]">Трафик по домену</p>
             <p className="mt-0.5 text-[12px] text-[hsl(var(--muted))]">
@@ -71,8 +71,8 @@ export function DomainInfo() {
             </p>
           </div>
         </li>
-        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 px-4 py-3">
-          <Globe className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626]" strokeWidth={2} />
+        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/50 px-4 py-3">
+          <Globe className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--accent))]" strokeWidth={2} />
           <div>
             <p className="text-xs font-semibold text-[hsl(var(--foreground))]">Регистрации</p>
             <p className="mt-0.5 text-[12px] text-[hsl(var(--muted))]">
@@ -80,8 +80,8 @@ export function DomainInfo() {
             </p>
           </div>
         </li>
-        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 px-4 py-3">
-          <CreditCard className="mt-0.5 h-4 w-4 shrink-0 text-[#DC2626]" strokeWidth={2} />
+        <li className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/50 px-4 py-3">
+          <CreditCard className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--accent))]" strokeWidth={2} />
           <div>
             <p className="text-xs font-semibold text-[hsl(var(--foreground))]">Конверсия домена</p>
             <p className="mt-0.5 text-[12px] text-[hsl(var(--muted))]">
@@ -91,7 +91,7 @@ export function DomainInfo() {
         </li>
       </ul>
 
-      <div className="mt-4 rounded-xl border border-[hsl(var(--border))]/40 bg-[hsl(var(--surface-muted))]/20 px-4 py-3">
+      <div className="mt-4 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/40 px-4 py-3">
         <p className="text-[11px] font-medium uppercase tracking-wider text-[hsl(var(--muted))]">
           Разделы на сайте по домену
         </p>

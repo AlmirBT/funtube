@@ -6,8 +6,8 @@ import { Users } from "lucide-react";
 import { newVsReturning } from "@/lib/mockData";
 
 const data = [
-  { name: "Новые", value: newVsReturning.newPercent, color: "#DC2626" },
-  { name: "Возвращающиеся", value: newVsReturning.returningPercent, color: "#22C55E" },
+  { name: "Новые", value: newVsReturning.newPercent, color: "hsl(var(--accent))" },
+  { name: "Возвращающиеся", value: newVsReturning.returningPercent, color: "hsl(var(--success))" },
 ];
 
 export function NewVsReturning() {
@@ -16,11 +16,11 @@ export function NewVsReturning() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.1, ease: [0.32, 0.72, 0.2, 1] }}
-      className="flex h-full flex-col rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface))] p-6 shadow-soft dark:shadow-soft-dark"
+      className="card-surface flex h-full flex-col p-6"
       aria-label="Новые и возвращающиеся покупатели"
     >
       <div className="mb-4 flex items-center gap-2">
-        <Users className="h-4 w-4 text-[#DC2626]" strokeWidth={2} />
+        <Users className="h-4 w-4 text-[hsl(var(--accent))]" strokeWidth={2} />
         <h3 className="text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">
           Новые vs Возвращающиеся
         </h3>
@@ -65,11 +65,11 @@ export function NewVsReturning() {
       </div>
       <div className="mt-2 flex justify-center gap-6 text-center">
         <div>
-          <p className="text-2xl font-bold tabular-nums text-[#DC2626]">{newVsReturning.newPercent}%</p>
+          <p className="text-2xl font-bold tabular-nums text-[hsl(var(--accent))]">{newVsReturning.newPercent}%</p>
           <p className="text-[11px] text-[hsl(var(--muted))]">Новые</p>
         </div>
         <div>
-          <p className="text-2xl font-bold tabular-nums text-[hsl(var(--foreground))]">{newVsReturning.returningPercent}%</p>
+          <p className="text-2xl font-bold tabular-nums text-[hsl(var(--success))]">{newVsReturning.returningPercent}%</p>
           <p className="text-[11px] text-[hsl(var(--muted))]">Постоянные</p>
         </div>
       </div>

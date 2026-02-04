@@ -42,10 +42,10 @@ export function StatCard({
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className={`group relative overflow-visible rounded-2xl bg-[hsl(var(--surface))] p-6 shadow-soft transition-all duration-[400ms] ease-out hover:shadow-soft-lg hover:shadow-glow-subtle dark:shadow-soft-dark dark:hover:shadow-soft-dark-lg dark:hover:shadow-glow-subtle ${
-        isHovered ? "ring-2 ring-[#DC2626]/30 ring-inset" : ""
+      className={`card-surface group p-6 transition-all duration-[400ms] ease-out hover:shadow-soft-lg hover:shadow-glow-subtle dark:shadow-soft-dark dark:hover:shadow-soft-dark-lg dark:hover:shadow-glow-subtle ${
+        isHovered ? "ring-1 ring-[hsl(var(--accent))]/35 ring-inset" : ""
       }`}
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -4 }}
       whileTap={{ scale: 0.998 }}
     >
       <div className="flex items-start justify-between gap-5">
@@ -102,8 +102,8 @@ export function StatCard({
           </AnimatePresence>
         </div>
         <motion.div
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--accent-muted))] text-[hsl(var(--accent))] transition-all duration-300 ease-out group-hover:bg-[hsl(var(--accent))] group-hover:text-[hsl(var(--accent-foreground))] group-hover:shadow-[0_0_20px_-4px_rgba(220,38,38,0.35)] dark:group-hover:shadow-[0_0_24px_-4px_rgba(220,38,38,0.4)]"
-          whileHover={{ scale: 1.04 }}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))] transition-all duration-300 ease-out group-hover:bg-[hsl(var(--accent))] group-hover:text-[hsl(var(--accent-foreground))] group-hover:shadow-[0_0_24px_-8px_hsl(var(--accent)/0.5)]"
+          whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "tween", duration: 0.3, ease: [0.32, 0.72, 0.2, 1] }}
         >

@@ -84,12 +84,12 @@ export function YouTubersLeaderboard() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.1, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-soft dark:border-[hsl(var(--border))]/40 dark:shadow-soft-dark sm:p-8 transition-shadow duration-500 hover:shadow-glow-subtle"
+      className="card-surface p-6 sm:p-8 transition-shadow duration-500 hover:shadow-glow-subtle"
       aria-label="Рейтинг ютуберов"
     >
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#DC2626]/10 text-[#DC2626] shadow-[0_0_16px_-4px_rgba(220,38,38,0.2)] dark:shadow-[0_0_20px_-4px_rgba(220,38,38,0.25)]">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))] shadow-[0_0_16px_-8px_hsl(var(--accent)/0.45)]">
             <Trophy className="h-5 w-5" strokeWidth={2} />
           </div>
           <div>
@@ -110,14 +110,14 @@ export function YouTubersLeaderboard() {
               placeholder="Поиск по нику..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full min-w-[180px] rounded-xl border border-[hsl(var(--border))]/80 bg-[hsl(var(--surface-muted))]/50 py-2.5 pl-10 pr-4 text-[13px] text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted))] transition-colors focus:border-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/20 dark:border-[hsl(var(--border))]/60"
+              className="w-full min-w-[180px] rounded-2xl border border-[hsl(var(--border))]/70 bg-[hsl(var(--surface-muted))]/60 py-2.5 pl-10 pr-4 text-[13px] font-medium text-[hsl(var(--foreground))] placeholder:text-[hsl(var(--muted))] transition-colors focus:border-[hsl(var(--accent))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/20"
             />
           </div>
           {hasActiveFilters && (
             <button
               type="button"
               onClick={clearFilters}
-              className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-[12px] font-medium text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--foreground))]"
+              className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-[12px] font-semibold text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--foreground))]"
             >
               <X className="h-3.5 w-3.5" />
               Сбросить
@@ -126,10 +126,10 @@ export function YouTubersLeaderboard() {
         </div>
       </div>
 
-      <div className="scrollbar-premium overflow-x-auto rounded-xl border border-[hsl(var(--border))]/50 dark:border-[hsl(var(--border))]/40">
+      <div className="scrollbar-premium overflow-x-auto rounded-2xl border border-[hsl(var(--border))]/50">
         <table className="w-full min-w-[800px] border-collapse text-[13px]">
           <thead>
-            <tr className="bg-[hsl(var(--surface-muted))]/60 dark:bg-[hsl(var(--surface-muted))]/40">
+            <tr className="bg-[hsl(var(--surface-muted))]/70">
               <th className="w-20 px-3 py-3.5 text-center text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">
                 <button
                   type="button"
@@ -206,9 +206,9 @@ export function YouTubersLeaderboard() {
                   transition={{ delay: Math.min(0.03 * i, 0.3) }}
                   className={`border-t border-[hsl(var(--border))]/50 first:border-t-0 transition-colors ${
                     isYou
-                      ? "bg-[#DC2626]/5 dark:bg-[#DC2626]/10"
-                      : "hover:bg-[hsl(var(--surface-muted))]/25"
-                  } ${isYou ? "ring-1 ring-inset ring-[#DC2626]/20" : ""}`}
+                      ? "bg-[hsl(var(--accent))]/8"
+                      : "hover:bg-[hsl(var(--surface-muted))]/40"
+                  } ${isYou ? "ring-1 ring-inset ring-[hsl(var(--accent))]/25" : ""}`}
                 >
                   <td className="w-20 px-3 py-3.5 text-center align-middle">
                     <span
@@ -228,14 +228,14 @@ export function YouTubersLeaderboard() {
                   <td className="min-w-[140px] px-4 py-3.5 text-left align-middle">
                     {isYou ? (
                       <span className="flex items-center gap-2 font-medium text-[hsl(var(--foreground))]">
-                        <User className="h-4 w-4 shrink-0 text-[#DC2626]" strokeWidth={2} />
+                        <User className="h-4 w-4 shrink-0 text-[hsl(var(--accent))]" strokeWidth={2} />
                         {u.name}
                       </span>
                     ) : (
                       <button
                         type="button"
                         onClick={() => setSelectedYouTuber(u)}
-                        className="flex w-full items-center gap-2 text-left font-medium text-[hsl(var(--foreground))] transition-colors hover:text-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30 focus:ring-offset-1 rounded-lg px-1 -mx-1 py-0.5"
+                        className="flex w-full items-center gap-2 rounded-lg px-1 py-0.5 -mx-1 text-left font-medium text-[hsl(var(--foreground))] transition-colors hover:text-[hsl(var(--accent))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent))]/30 focus:ring-offset-1"
                       >
                         {u.isOfficial && <Crown className="h-3.5 w-3.5 shrink-0 text-amber-500" strokeWidth={2} />}
                         {u.name}
@@ -261,7 +261,7 @@ export function YouTubersLeaderboard() {
                     {!isYou && (
                       <Link
                         href={`/dashboard/analytics?user=${u.id}&compare=1`}
-                        className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-[11px] font-medium text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))] hover:text-[#DC2626]"
+                        className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-[11px] font-semibold text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))] hover:text-[hsl(var(--accent))]"
                         title="Сравнить с ним"
                       >
                         <GitCompare className="h-3.5 w-3.5" />

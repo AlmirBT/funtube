@@ -11,11 +11,11 @@ export function RevenueForecast() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.1, ease: [0.32, 0.72, 0.2, 1] }}
-      className="flex h-full flex-col rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-sm dark:border-[hsl(var(--border))]/40 dark:shadow-none"
+      className="card-surface flex h-full flex-col p-6"
       aria-label="Прогноз дохода"
     >
       <div className="flex items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))] text-[#22C55E]">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))] text-emerald-500">
           <TrendingUp className="h-4 w-4" strokeWidth={2} />
         </div>
         <div>
@@ -40,7 +40,7 @@ export function RevenueForecast() {
           <p className="text-xs font-medium text-[hsl(var(--muted))]">
             За неделю
           </p>
-          <p className="mt-1 text-xl font-semibold tabular-nums tracking-tight text-[#22C55E]">
+          <p className="mt-1 text-xl font-semibold tabular-nums tracking-tight text-emerald-500">
             {formatRubles(revenueForecast.week)}
           </p>
         </div>

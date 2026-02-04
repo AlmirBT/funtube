@@ -95,7 +95,7 @@ export const kpiContext: Record<string, string> = {
   revenueByDomain: "Доход по вашему домену",
 };
 
-const now = new Date();
+const now = new Date(MOCK_NOW);
 const chartDates: ChartDataPoint[] = Array.from({ length: 14 }, (_, i) => {
   const d = new Date(now);
   d.setDate(d.getDate() - (13 - i));
@@ -133,7 +133,7 @@ function at<T>(arr: T[], i: number): T {
 }
 
 function dateByIndex(i: number, daysBack: number): string {
-  const d = new Date();
+  const d = new Date(MOCK_NOW);
   d.setDate(d.getDate() - (i % daysBack));
   return d.toISOString();
 }
@@ -365,3 +365,4 @@ export function findDomainStats(domain: string): { main: DomainStats; current: D
   }
   return null;
 }
+import { MOCK_NOW } from "./dateUtils";

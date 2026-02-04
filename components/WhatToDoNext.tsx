@@ -16,11 +16,11 @@ export function WhatToDoNext() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border-2 border-[#DC2626]/30 bg-gradient-to-br from-[#DC2626]/10 to-[#7F1D1D]/5 p-6 shadow-soft dark:from-[#DC2626]/15 dark:to-[#7F1D1D]/10 dark:shadow-soft-dark"
+      className="card-surface bg-gradient-to-br from-[hsl(var(--accent))]/12 to-[hsl(var(--accent-dark))]/10 p-6"
       aria-label="Что делать дальше"
     >
       <div className="mb-6 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#DC2626]/20 text-[#DC2626]">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/20 text-[hsl(var(--accent))]">
           <Target className="h-5 w-5" strokeWidth={2} />
         </div>
         <div>
@@ -41,9 +41,9 @@ export function WhatToDoNext() {
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25 + i * 0.08 }}
-              className="flex items-start gap-4 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface))]/80 p-4 dark:bg-[hsl(var(--surface-muted))]/30"
+              className="flex items-start gap-4 rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface))]/80 p-4"
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#DC2626]/10 text-[#DC2626]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
                 <Icon className="h-4 w-4" strokeWidth={2} />
               </div>
               <div>

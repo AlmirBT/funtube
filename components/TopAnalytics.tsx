@@ -35,11 +35,11 @@ export function TopAnalytics() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl bg-[hsl(var(--surface))] p-8 shadow-soft dark:shadow-soft-dark sm:p-10 lg:p-12 transition-all duration-500 hover:shadow-glow-subtle"
+      className="card-surface p-8 sm:p-10 lg:p-12 transition-all duration-500 hover:shadow-glow-subtle"
       aria-label="Топ-аналитика"
     >
       <div className="mb-12 flex items-start gap-4 sm:gap-5">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#DC2626]/10 text-[#DC2626] shadow-[0_0_24px_-6px_rgba(220,38,38,0.22)] dark:shadow-[0_0_32px_-6px_rgba(220,38,38,0.28)] transition-transform duration-300 hover:scale-105">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))] shadow-[0_0_24px_-10px_hsl(var(--accent)/0.45)] transition-transform duration-300 hover:scale-105">
           <Trophy className="h-6 w-6" strokeWidth={2} />
         </div>
         <div>
@@ -57,10 +57,10 @@ export function TopAnalytics() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface-muted))]/30 p-7 sm:p-8 shadow-soft transition-all duration-300 ease-out hover:shadow-soft-lg hover:shadow-glow-subtle hover:border-[hsl(var(--border))]/70 dark:border-[hsl(var(--border))]/40 dark:shadow-soft-dark dark:hover:shadow-soft-dark-lg dark:hover:shadow-glow-subtle"
+          className="card-muted p-7 sm:p-8 shadow-soft transition-all duration-300 ease-out hover:shadow-soft-lg hover:shadow-glow-subtle"
         >
           <div className="mb-7 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#DC2626]/15 text-[#DC2626]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/15 text-[hsl(var(--accent))]">
               <ShoppingBag className="h-4 w-4" strokeWidth={2} />
             </div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--muted))]">
@@ -74,8 +74,8 @@ export function TopAnalytics() {
                 variants={item}
                 className={`group rounded-xl p-5 transition-all duration-300 ${
                   i === 0
-                    ? "bg-[#DC2626]/8 ring-1 ring-[#DC2626]/25 dark:bg-[#DC2626]/12 dark:ring-[#DC2626]/30"
-                    : "hover:bg-[hsl(var(--surface-muted))]/70 dark:hover:bg-[hsl(var(--surface-muted))]/50"
+                    ? "bg-[hsl(var(--accent))]/10 ring-1 ring-[hsl(var(--accent))]/25"
+                    : "hover:bg-[hsl(var(--surface))]/70"
                 }`}
                 whileHover={{ scale: i === 0 ? 1.015 : 1.008 }}
                 transition={spring}
@@ -84,10 +84,10 @@ export function TopAnalytics() {
                   <div
                     className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg font-bold ${
                       i === 0
-                        ? "bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/35"
+                        ? "bg-[hsl(var(--accent))] text-white shadow-lg shadow-[hsl(var(--accent))]/35"
                         : i < 3
-                          ? "bg-[hsl(var(--surface-muted))] text-[hsl(var(--foreground))]"
-                          : "bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] group-hover:bg-[#DC2626]/15 group-hover:text-[#DC2626]"
+                          ? "bg-[hsl(var(--surface))] text-[hsl(var(--foreground))]"
+                          : "bg-[hsl(var(--surface))] text-[hsl(var(--muted))] group-hover:bg-[hsl(var(--accent))]/15 group-hover:text-[hsl(var(--accent))]"
                     }`}
                   >
                     {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : <span className="text-sm tabular-nums">{i + 1}</span>}
@@ -97,18 +97,18 @@ export function TopAnalytics() {
                       {p.name}
                     </p>
                     <div className="mt-3 flex flex-wrap items-baseline gap-4 text-[13px] text-[hsl(var(--muted))]">
-                      <span className={`font-bold tabular-nums tracking-tight ${i === 0 ? "text-[17px] text-[#DC2626]" : "text-[15px] text-[#DC2626] font-semibold"}`}>
+                      <span className={`font-bold tabular-nums tracking-tight ${i === 0 ? "text-[17px] text-[hsl(var(--accent))]" : "text-[15px] text-[hsl(var(--accent))] font-semibold"}`}>
                         {formatRubles(p.amount)}
                       </span>
                       <span className="font-medium">{p.count} покупок</span>
                       <span>{p.sharePercent}% от дохода</span>
                     </div>
-                    <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-[hsl(var(--surface-muted))]">
+                    <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-[hsl(var(--surface))]">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${(p.sharePercent / maxShare) * 100}%` }}
                         transition={{ duration: 1.1, delay: 0.3 + i * 0.08, ease: [0.32, 0.72, 0.2, 1] }}
-                        className="h-full rounded-full bg-gradient-to-r from-[#DC2626] to-[#991B1B]"
+                        className="h-full rounded-full bg-gradient-to-r from-[hsl(var(--accent))] to-[hsl(var(--accent-dark))]"
                       />
                     </div>
                   </div>
@@ -122,13 +122,13 @@ export function TopAnalytics() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative overflow-hidden rounded-2xl border border-[#DC2626]/20 bg-gradient-to-br from-[#DC2626]/10 via-[#DC2626]/5 to-[#7F1D1D]/6 p-8 sm:p-10 shadow-soft transition-all duration-300 ease-out hover:border-[#DC2626]/30 hover:shadow-glow dark:from-[#DC2626]/14 dark:via-[#DC2626]/8 dark:to-[#7F1D1D]/10 dark:shadow-soft-dark dark:hover:shadow-glow-dark"
+          className="relative overflow-hidden rounded-2xl border border-[hsl(var(--accent))]/25 bg-gradient-to-br from-[hsl(var(--accent))]/12 via-[hsl(var(--accent))]/6 to-[hsl(var(--accent-dark))]/10 p-8 sm:p-10 shadow-soft transition-all duration-300 ease-out hover:border-[hsl(var(--accent))]/40 hover:shadow-glow dark:shadow-soft-dark dark:hover:shadow-glow-dark"
         >
-          <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#DC2626]/12 blur-3xl" aria-hidden />
-          <div className="absolute bottom-0 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[#DC2626]/8 blur-2xl" aria-hidden />
+          <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[hsl(var(--accent))]/18 blur-3xl" aria-hidden />
+          <div className="absolute bottom-0 left-1/2 h-24 w-48 -translate-x-1/2 rounded-full bg-[hsl(var(--accent))]/12 blur-2xl" aria-hidden />
           <div className="relative">
             <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#DC2626]/15 text-[#DC2626] shadow-sm dark:bg-[#DC2626]/20">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/18 text-[hsl(var(--accent))] shadow-sm">
                 <Bell className="h-5 w-5" strokeWidth={2} />
               </div>
               <div>
@@ -147,7 +147,7 @@ export function TopAnalytics() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: [0.32, 0.72, 0.2, 1] }}
-              className="rounded-2xl border border-[#DC2626]/15 bg-[#DC2626]/5 px-6 py-8 dark:bg-[#DC2626]/8 dark:border-[#DC2626]/20"
+              className="rounded-2xl border border-[hsl(var(--accent))]/20 bg-[hsl(var(--accent))]/8 px-6 py-8"
             >
               <p className="text-money-hero glow-number text-4xl font-extrabold tabular-nums sm:text-5xl md:text-6xl lg:text-7xl">
                 {activeSubscribersByDomain.toLocaleString("ru-RU")}

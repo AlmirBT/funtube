@@ -71,11 +71,11 @@ export function SideDrawer({ purchase, onClose }: SideDrawerProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 36, stiffness: 220 }}
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[hsl(var(--border))] bg-[hsl(var(--surface))] shadow-2xl dark:shadow-2xl"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-[hsl(var(--border))]/70 bg-[hsl(var(--surface))]/90 shadow-2xl backdrop-blur-xl"
             role="dialog"
             aria-label="Детали покупки"
           >
-            <div className="flex items-center justify-between border-b border-[hsl(var(--border))] px-6 py-4">
+            <div className="flex items-center justify-between border-b border-[hsl(var(--border))]/70 px-6 py-4">
               <h2 className="text-lg font-semibold tracking-tight text-[hsl(var(--foreground))]">
                 Детали покупки
               </h2>
@@ -83,7 +83,7 @@ export function SideDrawer({ purchase, onClose }: SideDrawerProps) {
                 type="button"
                 onClick={onClose}
                 whileTap={{ scale: 0.95 }}
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface-muted))]/80 hover:text-[hsl(var(--foreground))]"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--surface-muted))] text-[hsl(var(--muted))] transition-colors hover:bg-[hsl(var(--surface))] hover:text-[hsl(var(--foreground))]"
                 aria-label="Закрыть"
               >
                 <X className="h-4 w-4" />
@@ -102,9 +102,9 @@ export function SideDrawer({ purchase, onClose }: SideDrawerProps) {
                 <motion.div
                   variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
                   transition={{ duration: 0.35, ease: [0.32, 0.72, 0.2, 1] }}
-                  className="flex items-center gap-4 rounded-xl bg-[hsl(var(--surface-muted))]/50 p-4"
+                  className="flex items-center gap-4 rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/60 p-4"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#DC2626]/10 text-[#DC2626]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[hsl(var(--accent))]/12 text-[hsl(var(--accent))]">
                     <User className="h-6 w-6" strokeWidth={1.8} />
                   </div>
                   <div>
@@ -136,7 +136,7 @@ export function SideDrawer({ purchase, onClose }: SideDrawerProps) {
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0 } }}
                     transition={{ duration: 0.35, ease: [0.32, 0.72, 0.2, 1] }}
-                    className="flex items-center justify-between rounded-lg border border-[hsl(var(--border))]/60 px-4 py-3"
+                    className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/60 px-4 py-3"
                   >
                     <span className="text-sm text-[hsl(var(--muted))]">
                       Статус
@@ -151,7 +151,7 @@ export function SideDrawer({ purchase, onClose }: SideDrawerProps) {
                 <motion.div
                   variants={{ hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0 } }}
                   transition={{ duration: 0.35, ease: [0.32, 0.72, 0.2, 1] }}
-                  className="rounded-xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/30 p-4"
+                  className="rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface-muted))]/40 p-4"
                 >
                   <p className="text-xs font-medium text-[hsl(var(--muted))]">
                     Раздел
@@ -186,7 +186,7 @@ function Row({
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: (index ?? 0) * 0.06 + 0.15, ease: [0.32, 0.72, 0.2, 1] }}
-      className="flex items-center justify-between rounded-lg border border-[hsl(var(--border))]/60 px-4 py-3"
+      className="flex items-center justify-between rounded-xl border border-[hsl(var(--border))]/60 px-4 py-3"
     >
       <span className="flex items-center gap-2 text-sm text-[hsl(var(--muted))]">
         <I className="h-4 w-4" strokeWidth={1.8} />

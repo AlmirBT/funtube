@@ -10,11 +10,11 @@ export function Achievements() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.12, ease: [0.32, 0.72, 0.2, 1] }}
-      className="flex h-full flex-col rounded-2xl border border-[hsl(var(--border))]/60 bg-[hsl(var(--surface))] p-6 shadow-soft dark:shadow-soft-dark"
+      className="card-surface flex h-full flex-col p-6"
       aria-label="Достижения"
     >
       <div className="mb-4 flex items-center gap-2">
-        <Award className="h-4 w-4 text-[#DC2626]" strokeWidth={2} />
+        <Award className="h-4 w-4 text-[hsl(var(--accent))]" strokeWidth={2} />
         <h3 className="text-[11px] font-semibold uppercase tracking-wider text-[hsl(var(--muted))]">
           Достижения
         </h3>

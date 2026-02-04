@@ -27,7 +27,7 @@ export function ChartConversionVsYouTubers() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.1, ease: [0.32, 0.72, 0.2, 1] }}
-      className="rounded-2xl border border-[hsl(var(--border))]/50 bg-[hsl(var(--surface))] p-6 shadow-sm dark:border-[hsl(var(--border))]/40 sm:p-8"
+      className="card-surface p-6 sm:p-8"
       aria-label="Конверсия домена: вы vs другие ютуберы"
     >
       <div className="mb-6">
@@ -57,8 +57,8 @@ export function ChartConversionVsYouTubers() {
               {data.map((entry) => (
                 <Cell
                   key={entry.name}
-                  fill={entry.isYou ? "#22C55E" : "hsl(var(--surface-muted))"}
-                  className={entry.isYou ? "shadow-[0_0_10px_rgba(34,197,94,0.3)]" : ""}
+                  fill={entry.isYou ? "hsl(var(--success))" : "hsl(var(--surface-muted))"}
+                  className={entry.isYou ? "shadow-[0_0_10px_hsl(var(--success)/0.45)]" : ""}
                 />
               ))}
             </Bar>
